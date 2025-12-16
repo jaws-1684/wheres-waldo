@@ -1,0 +1,23 @@
+body {
+    overflow-x: hidden;
+}
+
+.nav-data {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    width: 100%;
+}
+
+.title {
+    flex-grow: 3;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+        color: red;
+    }
+}
+
