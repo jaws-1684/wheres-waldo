@@ -21,3 +21,11 @@ a {
     }
 }
 
+@media (width <= 800px) {
+  body > * {
+    display: none;
+  }
+  body::after {
+    content: "Unfortunately your screen size is not supported.";
+  }
+}

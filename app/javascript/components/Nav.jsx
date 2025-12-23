@@ -3,16 +3,15 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 
 const Navigation = styled.nav`
-    height: 5vh;
+    min-height: 5vh;
     widht: 100vw;
-    font-size: 24px;
+    font-size: clamp(6px, 18px, 24px);
     color: blue;
     font-weight: bold;
     background-color: lightblue;
     display: flex;
     justify-content: start;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding: 10px;
 `
 export default function Navbar() {
     return (<Navigation>

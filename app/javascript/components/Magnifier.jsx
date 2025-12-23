@@ -22,7 +22,7 @@ export default function Magnifier ({refference, imageRef, zoom, position }) {
             backgroundRepeat: "no-repeat",
             backgroundSize: size,
             border: "2px solid black",
-            backgroundPosition: position.backgroundPosition}}>
+            backgroundPosition: position}}>
 
         </Magnifier_>)
 }

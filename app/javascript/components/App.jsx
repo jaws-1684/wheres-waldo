@@ -1,11 +1,11 @@
-import React from "react"
+import React, { createContext, useState } from "react"
 import "./App.css"
 import { Outlet, useLoaderData } from "react-router-dom"
 import Navbar from "./Nav";
-
+import { Container } from "./Container";
 export async function hightResImageLoader() {
   try {
-    const response = await fetch("http://127.0.0.1:3000/images/2");
+    const response = await fetch("/images/2");
     if (!response.ok) {
       throw new Response("Image not found", { status: 404 }); // Custom error
     }
@@ -14,11 +14,22 @@ export async function hightResImageLoader() {
     throw new Response("Server error", { status: 500 }); // Network failure
   }
 }
+export const MagnifierContext = createContext(null)
+
 function App(props) {
-   const { image_large } = useLoaderData()
+  const { image_large } = useLoaderData()
+  const [magnifierActivated, setMagnifierActivated] = useState(false)
+  const handleClick = () => setMagnifierActivated(!magnifierActivated)
   return (<>
         <Navbar/>
-        <Outlet context={{image_large}}/>
+        <MagnifierContext value={{magnifierActivated}}>
+          <Container>
+            <div>
+              <button style={{width: "fit-content"}} onClick={() => handleClick()}>Magnifier</button>
+            </div>
+            <Outlet context={{image_large}}/>
+          </Container>
+        </MagnifierContext>
     </>)
 }
 

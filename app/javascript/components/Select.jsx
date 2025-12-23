@@ -9,8 +9,8 @@ const CircleDashed = styled.div.attrs(props => ({
   $top: props.$top || 0,
   $left: props.$left || 0
 }))`
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     border: 5px dashed red;
     border-radius: 50%;
     position: absolute;
