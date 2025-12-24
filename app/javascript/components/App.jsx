@@ -3,16 +3,20 @@ import "./App.css"
 import { Outlet, useLoaderData } from "react-router-dom"
 import Navbar from "./Nav";
 import { Container } from "./Container";
-export async function hightResImageLoader() {
+
+export async function useFetch(url) {
   try {
-    const response = await fetch("/images/2");
+    const response = await fetch(url);
     if (!response.ok) {
-      throw new Response("Image not found", { status: 404 }); // Custom error
+      throw new Response("Not found", { status: 404 }); // Custom error
     }
     return await response.json();
   } catch (err) {
     throw new Response("Server error", { status: 500 }); // Network failure
   }
+}
+export async function hightResImageLoader() {
+  return await useFetch("/images/2")
 }
 export const MagnifierContext = createContext(null)
 
