@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_23_113750) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_24_072338) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,8 +22,12 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_23_113750) do
 
   create_table "positions", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.bigint "image_id", null: false
     t.integer "left"
     t.integer "top"
     t.datetime "updated_at", null: false
+    t.index ["image_id"], name: "index_positions_on_image_id"
   end
+
+  add_foreign_key "positions", "images"
 end

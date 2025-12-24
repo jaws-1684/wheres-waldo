@@ -22,7 +22,6 @@ export default function WheresWaldo({largeImage}) {
         noticeActive: false,
         noticeContent: ""
     })
-
     const { magnifierActivated } = useContext(MagnifierContext)
     const imageRef = useRef(null)
     const magnifierRef = useRef(null)

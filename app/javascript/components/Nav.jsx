@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import Data from "./Data"
+import Counter from "./Counter"
 
 const Navigation = styled.nav`
     min-height: 5vh;
@@ -18,7 +20,12 @@ export default function Navbar() {
         <div className="nav-data">
             <h2 className="title">Where's Waldo</h2>
             <Link><h2>Leader board</h2></Link>
-            <h2>Your Score: </h2>
+            <Data>
+                <div>
+                    <p>Your Score:</p>
+                    <Counter/>
+                </div>
+            </Data>
         </div>
         
         </Navigation>)
