@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { useFetch, WaldosContext } from "./App";
+import { useFetch } from "./App";
+import { WaldosContext } from "../routes/Game";
 
 const Question = styled.div`
   position: relative;

@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useRef, useState, createContext } from "r
 import Magnifier from "./Magnifier"
 import HResImage from "./HResImage"
 import Select from "./Select"
-import { MagnifierContext } from "../routes/Home"
+import { MagnifierContext } from "../routes/Game"
 import Notice from "./Notice"
 
 

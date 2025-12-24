@@ -19,20 +19,15 @@ export async function hightResImageLoader() {
   return await useFetch(`/images`)
 }
 
-export const WaldosContext = createContext({count: 0})
-
-function App(props) {
+function App() {
   const { images } = useLoaderData()
-  const image_large = images[0].url
-  const waldos = images[0].waldos
-  const [waldosIdentified, setWaldosIdentified] = useState({total: waldos, count: 0, positions: []})
+  
   return (<>
         <Navbar/>
-         <WaldosContext value={{waldosIdentified, setWaldosIdentified}}>
-            <Container>
-              <Outlet context={{image_large}}/>
-            </Container>
-        </WaldosContext>  
+        
+        <Container>
+          <Outlet context={{images}}/>
+        </Container>
     </>)
 }
 

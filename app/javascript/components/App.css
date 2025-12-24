@@ -4,9 +4,7 @@ body {
 
 .nav-data {
     display: flex;
-    justify-content: flex-end;
     gap: 20px;
-    width: 100%;
 }
 
 .title {

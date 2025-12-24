@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
   get "validate" => "positions#validate"
+  get "games/:id" => "games#show"
   resources :images
   resource :times, only: [:new, :show]
+
 end
