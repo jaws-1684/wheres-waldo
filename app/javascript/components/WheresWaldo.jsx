@@ -1,11 +1,11 @@
-import React, { useEffect, useContext, useRef, useState } from "react"
+import React, { useEffect, useContext, useRef, useState, createContext } from "react"
 import Magnifier from "./Magnifier"
 import HResImage from "./HResImage"
 import Select from "./Select"
 import { MagnifierContext } from "./App"
 import Notice from "./Notice"
 
-
+export const WaldosContext = createContext({count: 0})
 export default function WheresWaldo({largeImage}) {
     const [data, setData] = useState({top: 0, 
         left: 0, 
@@ -22,6 +22,7 @@ export default function WheresWaldo({largeImage}) {
         noticeActive: false,
         noticeContent: ""
     })
+    const [waldosIdentified, setWaldosIdentified] = useState({count: 0, positions: []})
     const { magnifierActivated } = useContext(MagnifierContext)
     const imageRef = useRef(null)
     const magnifierRef = useRef(null)
@@ -99,11 +100,13 @@ export default function WheresWaldo({largeImage}) {
             position={data.backgroundPosition} 
             imageRef={imageRef} 
             zoom={zoom}/> }
-        {info.isClicked && <Select 
-                info={info}
-                setInfo={setInfo} 
-                data={data}
-            />}     
+        <WaldosContext value={{waldosIdentified, setWaldosIdentified}}>
+            {info.isClicked && <Select 
+                    info={info}
+                    setInfo={setInfo} 
+                    data={data}
+                />}
+        </WaldosContext>            
         <HResImage
             largeImage={largeImage} 
             refference={imageRef} 

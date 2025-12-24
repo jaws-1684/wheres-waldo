@@ -6,5 +6,5 @@ class TimesController < ApplicationController
 	end
 	def show
 		render :json => { start_time: session[:current_time] }
-	end
+end
 end

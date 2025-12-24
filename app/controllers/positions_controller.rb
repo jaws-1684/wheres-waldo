@@ -6,7 +6,8 @@ class PositionsController < ApplicationController
 	end
 	private
 		def resp_body
-	    	{ target_valid: Position.validate_position(width: @width, height: @height, left: @left, top: @top) }
+			@result = Position.get_position(width: @width, height: @height, left: @left, top: @top)
+	    	{ position_id: @result&.id, target_valid:  @result ? true : false}
 	  	end
 	  	def set_arguments
 	  		[:width, :height, :top, :left].each do |arg|
