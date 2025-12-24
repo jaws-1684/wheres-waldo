@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   root "home#index"
   get "validate" => "positions#validate"
   resources :images
-  resource :times
+  resource :times, only: [:new, :show]
 end
