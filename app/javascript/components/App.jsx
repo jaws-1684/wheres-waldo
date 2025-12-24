@@ -16,24 +16,23 @@ export async function useFetch(url) {
   }
 }
 export async function hightResImageLoader() {
-  return await useFetch("/images/2")
+  return await useFetch(`/images`)
 }
-export const MagnifierContext = createContext(null)
+
+export const WaldosContext = createContext({count: 0})
 
 function App(props) {
-  const { image_large } = useLoaderData()
-  const [magnifierActivated, setMagnifierActivated] = useState(false)
-  const handleClick = () => setMagnifierActivated(!magnifierActivated)
+  const { images } = useLoaderData()
+  const image_large = images[0].url
+  const waldos = images[0].waldos
+  const [waldosIdentified, setWaldosIdentified] = useState({total: waldos, count: 0, positions: []})
   return (<>
         <Navbar/>
-        <MagnifierContext value={{magnifierActivated}}>
-          <Container>
-            <div>
-              <button style={{width: "fit-content"}} onClick={() => handleClick()}>Magnifier</button>
-            </div>
-            <Outlet context={{image_large}}/>
-          </Container>
-        </MagnifierContext>
+         <WaldosContext value={{waldosIdentified, setWaldosIdentified}}>
+            <Container>
+              <Outlet context={{image_large}}/>
+            </Container>
+        </WaldosContext>  
     </>)
 }
 

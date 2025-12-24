@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { useFetch } from "./App";
-import { WaldosContext } from "./WheresWaldo";
+import { useFetch, WaldosContext } from "./App";
 
 const Question = styled.div`
   position: relative;
@@ -52,14 +51,13 @@ export default function Select({handleClick, data, info, setInfo}) {
     const {left, top, image_height, image_width, relX, relY} = data
     const { waldosIdentified, setWaldosIdentified } = useContext(WaldosContext)
     const noticeMessages = ["Horray you found Waldo!", "OOops no Waldo here!"]
-    console.table(waldosIdentified)
-    
+
     async function handleButtonClick () {
       const response = await useFetch(`/validate?width=${image_width}&&height=${image_height}&&top=${relY}&&left=${relX}`)
 
       if (response.target_valid && !waldosIdentified.positions.some(pos => pos == Number(response.position_id))) {
         const positionsDup = [...waldosIdentified.positions, response.position_id]
-        setWaldosIdentified({count: waldosIdentified.count += 1, positions: positionsDup})
+        setWaldosIdentified({total: waldosIdentified.total, count: waldosIdentified.count += 1, positions: positionsDup})
       }
 
       if (response.target_valid != info.lastResponse) {

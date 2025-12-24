@@ -11,5 +11,5 @@ export default function Counter() {
        return () => clearInterval(key)
     }, [time])
     const duration = intervalToDuration({ start: 0, end: time * 1000 })
-    return <p>{duration.minutes || 0}:{duration.seconds || 0} minutes</p>
+    return <p>{duration.minutes || 0}:{duration.seconds || 0} s/m</p>
 }
