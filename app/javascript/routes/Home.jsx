@@ -1,9 +1,18 @@
 import React from "react";
-import styled from "styled-components";
+import { useOutletContext } from "react-router-dom";
+import { Container } from "../components/Container";
+import PuzzlePreview from "../components/PuzzlePreview";
 
-const PuzzlePreview = styled.div`
 
-`
+
 export default function Home() {
-    return <div>Home</div>
+    const { images } = useOutletContext()
+
+    return <div className="home">
+        <h1 className="home-title">Puzzles</h1>
+       {images.map(img => <PuzzlePreview key={img.id} title={img.title} id={img.id} image={img.url}/>)}
+    </div>
+     
+    
+    
 }

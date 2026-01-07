@@ -11,7 +11,8 @@ class ImagesController < ApplicationController
 					{
 						id: i.id,
 						url: image_url(i.name),
-						waldos: i.waldos
+						waldos: i.waldos,
+						title: i.title
 					})  
 			end
 			@result

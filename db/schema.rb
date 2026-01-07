@@ -10,22 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_24_102117) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_24_171949) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "g_times", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.time "end_at"
-    t.time "start_at"
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.string "user_time"
     t.index ["user_id"], name: "index_g_times_on_user_id"
+  end
+
+  create_table "game_times", force: :cascade do |t|
+    t.string "best_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_game_times_on_user_id"
   end
 
   create_table "images", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name"
+    t.string "title"
     t.datetime "updated_at", null: false
     t.integer "waldos"
   end
@@ -46,5 +54,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_24_102117) do
   end
 
   add_foreign_key "g_times", "users"
+  add_foreign_key "game_times", "users"
   add_foreign_key "positions", "images"
 end

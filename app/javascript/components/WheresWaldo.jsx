@@ -95,9 +95,9 @@ export default function WheresWaldo({largeImage}) {
         const position = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px"
         setData((data) => ({...data, backgroundPosition: position}))
     }
-    return(<>
+    return(<div className="ww">
         {info.noticeActive && <Notice>{info.noticeContent}</Notice>}
-        {magnifierActivated && <Magnifier 
+             {magnifierActivated && <Magnifier 
             refference={magnifierRef} 
             position={data.backgroundPosition} 
             imageRef={imageRef} 
@@ -107,7 +107,7 @@ export default function WheresWaldo({largeImage}) {
                     info={info}
                     setInfo={setInfo} 
                     data={data}
-                />}    
+                />}        
         <HResImage
             largeImage={largeImage} 
             refference={imageRef} 
@@ -115,6 +115,6 @@ export default function WheresWaldo({largeImage}) {
             handleClick={handleClick} 
             handleHover={handleHover}/>
           
-    </>)
+    </div>)
 
 }

@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   root "home#index"
   get "validate" => "positions#validate"
   get "games/:id" => "games#show"
+  get 'users' => "users#index"
+  get 'dashboard' => "dashboards#index"
+  post 'users/create'
   resources :images
   resource :times, only: [:new, :show]
 

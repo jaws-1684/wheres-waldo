@@ -1,6 +1,6 @@
 require "test_helper"
 
-class GTimeTest < ActiveSupport::TestCase
+class DashboardsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

@@ -3,6 +3,8 @@ import Home from "./Home";
 import ErrorPage from "./ErrorPage";
 import App, { hightResImageLoader } from "../components/App";
 import Game from "./Game";
+import Dashboard from "./Dashboard";
+
 const routes = [
   {
     path: "/",
@@ -13,6 +15,7 @@ const routes = [
      children: [
         { index: true, element: <Home />},
         { path: "/games/:id", element: <Game />},
+        { path: "/dashboard", element: <Dashboard />},
     ],
   },
 ];

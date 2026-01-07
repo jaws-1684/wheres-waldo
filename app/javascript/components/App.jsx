@@ -24,7 +24,6 @@ function App() {
   
   return (<>
         <Navbar/>
-        
         <Container>
           <Outlet context={{images}}/>
         </Container>
