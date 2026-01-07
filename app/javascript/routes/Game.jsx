@@ -5,7 +5,7 @@ import Counter  from "../components/Counter"
 import { useFetch } from "../components/App"
 import styled from "styled-components"
 import SignUp from "../components/SignUp"
-
+import { Search } from "lucide-react"
 export const WaldosContext = createContext({count: 0})
 export const MagnifierContext = createContext(null)
 
@@ -19,6 +19,7 @@ const Modal = styled.div`
     padding: 1rem;
     border-radius: 5px;   
 `
+
 function GameEnd ({setTimerActivated}) {
     const [time, setTime] = useState({})
 
@@ -70,7 +71,7 @@ export default function Game () {
         <MagnifierContext value={{magnifierActivated}}>
             <div className="utils">
                 <p>Your time: </p><Counter timerActivated={timerActivated}/>
-                <button style={{width: "fit-content"}} onClick={() => handleClick()}>Magnifier</button>
+                 <Search className="magnifier" style={{width: "fit-content"}} onClick={() => handleClick()}/>
             </div>
             <WheresWaldo largeImage={image_large}/>
         </MagnifierContext>

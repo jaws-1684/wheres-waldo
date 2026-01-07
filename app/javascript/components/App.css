@@ -120,6 +120,11 @@ input {
   background: #5F9598;
   border-radius: 2px;
 }
+
+.magnifier:hover{
+  color: white;
+  cursor: pointer;
+}
 @keyframes drop {
   from {
     transform: translateY(-100%);
