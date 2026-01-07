@@ -26,7 +26,11 @@ a {
         color: #1D546D;
     }
 }
-
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 .play-link {
   padding: 5px;
   margin: 0 auto;
@@ -125,6 +129,13 @@ input {
   color: white;
   cursor: pointer;
 }
+.footer-container {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+  padding: 5px;
+}
 @keyframes drop {
   from {
     transform: translateY(-100%);
@@ -134,11 +145,5 @@ input {
   }
 }
 
-/* @media (width <= 800px) {
-  body > * {
-    display: none;
-  }
-  body::after {
-    content: "Unfortunately your screen size is not supported.";
-  }
-} */
+@media (width <= 800px) {
+}

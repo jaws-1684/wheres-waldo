@@ -3,6 +3,7 @@ import "./App.css"
 import { Outlet, useLoaderData } from "react-router-dom"
 import Navbar from "./Nav";
 import { Container } from "./Container";
+import Footer from "./Footer";
 
 export async function useFetch(url) {
   try {
@@ -22,12 +23,16 @@ export async function hightResImageLoader() {
 function App() {
   const { images } = useLoaderData()
   
-  return (<>
+  return (
+    <div className="app-wrapper">
         <Navbar/>
         <Container>
-          <Outlet context={{images}}/>
+          
+             <Outlet context={{images}}/>
+     
         </Container>
-    </>)
+        <Footer/>
+    </div>)
 }
 
 export default App

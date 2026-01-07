@@ -8,7 +8,13 @@ const PuzzlePreview_s = styled.div`
     flex-direction: column;
     padding: 0 20px 0 20px;
     border-radius: 20px;
-    background: #1D546D; 
+    background: #1D546D;
+    @media (width <= 800px) {
+        && {
+            max-width: 80vw;
+        }
+    }
+} 
 `
 export default function PuzzlePreview({image, id, title}) {
     return <PuzzlePreview_s>
