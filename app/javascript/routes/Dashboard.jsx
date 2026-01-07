@@ -14,22 +14,25 @@ export default function Dashboard() {
             ignore = true;
         }
     }, []);
-    console.log(users)
-    return <table>
-                <caption>
-                    Leader Board
-                </caption>
-                <thead>
-                    <tr>
-                    <th scope="col">Username</th>
-                    <th scope="col">Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users && users.users.map((user) => <tr key={user.username}>
-                    <td>{user.username}</td>
-                    <td>{user.best_time.best_time}</td>
-                    </tr>)}
-                </tbody>
-            </table> 
+    return <div className="leader-board">
+         <h1>
+            Leader Board
+        </h1>
+        <table>
+        <thead>
+            <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {users && users.users.map((user) => <tr key={user.username}>
+            <td>{user.username}</td>
+            <td>{user.best_time.best_time}</td>
+            </tr>)}
+        </tbody>
+        </table> 
+    </div>
+    
+    
 }

@@ -16,7 +16,23 @@ IMAGES = [ {
 ]
   }
 ]
-
+USERS = [
+  { username: "cosmic_wanderer", time: "17:42" },
+  { username: "shadow_whisper", time: "03:15" },
+  { username: "neon_pulse", time: "22:08" },
+  { username: "velvet_storm", time: "14:33" },
+  { username: "cipher_dream", time: "19:27" },
+  { username: "lunar_echo", time: "08:51" },
+  { username: "pixel_phantom", time: "11:04" },
+  { username: "azure_drift", time: "23:19" },
+  { username: "chrome_sage", time: "06:45" },
+  { username: "ember_flux", time: "20:12" }
+]
+USERS.each do |u|
+    user = User.build(username: u[:username])
+    user.game_times.build(best_time: u[:time])
+    user.save!
+end
 IMAGES.each do |i|
 	i[:positions].each {|p| Position.find_or_create_by!(top: p["top"].to_i, left: p["left"].to_i, image_id: i[:image_id]) }
 end
