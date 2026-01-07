@@ -28,7 +28,7 @@ export default function Dashboard() {
                 <tbody>
                     {users && users.users.map((user) => <tr key={user.username}>
                     <td>{user.username}</td>
-                    <td>{user.best_time}</td>
+                    <td>{user.best_time.best_time}</td>
                     </tr>)}
                 </tbody>
             </table> 

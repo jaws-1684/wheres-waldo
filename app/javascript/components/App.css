@@ -104,6 +104,22 @@ tfoot td {
 .title > span {
   color: #1D546D;
 }
+input {
+  border: 1px solid #061E29;
+  border-radius: 3px;
+  width: 100%;
+}
+.user-submit {
+  background: none;
+  border: none;
+  font-size: large;
+  color: #1D546D;
+  cursor: pointer;
+}
+.user-submit:hover {
+  background: #5F9598;
+  border-radius: 2px;
+}
 @keyframes drop {
   from {
     transform: translateY(-100%);

@@ -3,54 +3,23 @@ import WheresWaldo from "../components/WheresWaldo"
 import { useOutletContext, useParams } from "react-router-dom"
 import Counter  from "../components/Counter"
 import { useFetch } from "../components/App"
-import { useNavigate } from "react-router-dom"
+import styled from "styled-components"
+import SignUp from "../components/SignUp"
+
 export const WaldosContext = createContext({count: 0})
 export const MagnifierContext = createContext(null)
 
-function SignUp ({bestTime=20}) {
-    const [input, setInput] = useState("")
-    let navigate = useNavigate();
-    const onChange = (event, setFunction) => {
-        setFunction(event.target.value);
-    };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const url = "/users/create";
-
-
-        const body = {
-            user: { username: input, game_times_attributes: [{ best_time: bestTime }] }
-        };
-
-        const token = document.querySelector('meta[name="csrf-token"]').content;
-        fetch(url, {
-        method: "POST",
-        headers: {
-            "X-CSRF-Token": token,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-        })
-        .then((response) => {
-            if (response.ok) {
-            return response.json();
-            }
-            throw new Error("Network response was not ok.");
-        })
-        .then((response) => navigate(`/dashboard`))
-        .catch((error) => console.log(error.message));
-    };
-    return <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Enter your username:</label>
-        <input
-            value={input} 
-            onChange={(e) => setInput(e.target.value)}  
-            name="username"/>
-        <button type="submit">Submit</button>    
-    </form>
-}
-function GameEnd () {
+const Modal = styled.div`
+    position: fixed;
+    top: 50vh;
+    left: 40vw;
+    width: fit-content;
+    background: white;
+    padding: 1rem;
+    border-radius: 5px;   
+`
+function GameEnd ({setTimerActivated}) {
     const [time, setTime] = useState({})
 
     useEffect(() => {
@@ -58,6 +27,7 @@ function GameEnd () {
         useFetch("/times").then((res) => {
             if (!ignore) {
                 setTime(res.time);
+                setTimerActivated(false);
             }
         });
         
@@ -66,7 +36,10 @@ function GameEnd () {
         }
     }, []);
 
-    return <div>Game ended. Your time was: {time.minutes} minutes and {time.seconds} seconds.</div>
+    return <Modal>
+           <SignUp time={time}/>
+            <p>Game ended. Your time was: {time.minutes} minutes and {time.seconds} seconds.</p>
+           </Modal>
 }
 
 export default function Game () {
@@ -85,19 +58,18 @@ export default function Game () {
     const waldos = image.waldos
     const [waldosIdentified, setWaldosIdentified] = useState({total: waldos, count: 0, positions: []})
     const [magnifierActivated, setMagnifierActivated] = useState(false)
+    const [timerActivated, setTimerActivated] = useState(true)
+    const allWaldosIndentified = waldosIdentified.count === waldosIdentified.total;
     const handleClick = () => setMagnifierActivated(!magnifierActivated)
 
-    if (waldosIdentified.count === waldosIdentified.total) {
-            return <GameEnd/>
-    }
     return(<>
-    <SignUp/>
      <WaldosContext value={{waldosIdentified, setWaldosIdentified}}>
+        { allWaldosIndentified && <GameEnd setTimerActivated={setTimerActivated}/>}
         <h1>Hint: You have to find {waldos} Waldos in this puzzle</h1>
         <h2>Waldos left: {waldos - waldosIdentified.count}</h2>
         <MagnifierContext value={{magnifierActivated}}>
             <div className="utils">
-                <p>Your time: </p><Counter/>
+                <p>Your time: </p><Counter timerActivated={timerActivated}/>
                 <button style={{width: "fit-content"}} onClick={() => handleClick()}>Magnifier</button>
             </div>
             <WheresWaldo largeImage={image_large}/>
