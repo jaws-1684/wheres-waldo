@@ -46,7 +46,7 @@ builder:
 accessories:
   postgres:
     image: postgres:17 # Use the correct version for your app
-    host: 62.171.183.69
+    host:  127.0.0.1
     port: 5432
     env:
       clear:
