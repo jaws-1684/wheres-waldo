@@ -46,7 +46,7 @@ accessories:
   postgres:
     image: postgres:17 # Use the correct version for your app
     host: DB_HOST
-    port: 5432
+    port: DB_PORT
     env:
       clear:
         DB_USER: whereswaldo
