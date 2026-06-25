@@ -1,8 +1,8 @@
 <% require "dotenv"; Dotenv.load(".env") %>
 # config/deploy.yml
-service: where-waldo
+service: whereswaldo
 
-image: danscorpan/where-waldo
+image: danscorpan/whereswaldo
 
 servers:
   web:
@@ -40,6 +40,7 @@ builder:
     - KAMAL_USERNAME
     - KAMAL_REGISTRY_PASSWORD
     - RAILS_MASTER_KEY
+    - SECRET_KEY_BASE
 
 accessories:
   postgres:
