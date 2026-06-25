@@ -1,5 +1,6 @@
+image = Image.find_or_create_by(name: "0c92741ef0a57cf712b1870d01ae8819.png", title: "Where's Waldo at Sea", waldos: 3)
 IMAGES = [ { 
-	image_id: 2,	
+	image_id: image.id,	
 	positions: [
     {
         "top" => 29.964252767527675,
