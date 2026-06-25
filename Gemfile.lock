@@ -383,6 +383,7 @@ DEPENDENCIES
   bundler-audit
   capybara
   debug
+  dotenv (~> 3.2)
   image_processing (~> 1.2)
   jbuilder
   jsbundling-rails
@@ -403,4 +404,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   2.7.2
+  4.0.2

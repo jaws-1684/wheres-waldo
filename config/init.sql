@@ -1,0 +1,4 @@
+CREATE DATABASE whereswaldo_production;
+CREATE DATABASE whereswaldo_production_cache;
+CREATE DATABASE whereswaldo_production_queue;
+CREATE DATABASE whereswaldo_production_cable;
