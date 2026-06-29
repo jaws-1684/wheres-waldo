@@ -7,7 +7,7 @@ image: danscorpan/whereswaldo
 servers:
   web:
     hosts:
-      - 62.171.183.69 # The IP of the staging server from Hetzner
+      - 62.171.183.69 
 
 registry:
   username: 
@@ -29,8 +29,8 @@ env:
 
 
 proxy:
-  ssl: false
-  host: 62.171.183.69
+  ssl: trye
+  host: wheres-waldo.jawsprojects.net
   app_port: 3000
 
 builder:
