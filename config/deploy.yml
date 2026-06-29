@@ -50,7 +50,7 @@ accessories:
     port: 5432
     env:
       clear:
-        DB_USER: jaws
+        DB_USER: whereswaldo
         DB: whereswaldo_production
       secret:
         - POSTGRES_PASSWORD
