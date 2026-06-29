@@ -29,7 +29,7 @@ env:
 
 
 proxy:
-  ssl: trye
+  ssl: true
   host: wheres-waldo.jawsprojects.net
   app_port: 3000
 
